@@ -28,11 +28,12 @@ const CalculatorForm = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault(); // Annule le comportement "submit" du formulaire (refresh de la page)
 
-        const data = {
+        /*const data = {
             nb1: parseInt(nb1),
             operation: operation,
             nb2: parseInt(nb2)
-        }
+        }*/
+        
         switch (operation){
             case '+':
                 setResult (parseInt(nb1) + parseInt(nb2));
@@ -45,7 +46,10 @@ const CalculatorForm = (props) => {
             break;
             case '/':
                 setResult (parseInt(nb1) / parseInt(nb2));
-             break;
+            break;
+            default:
+                setResult (parseInt(nb1) % parseInt(nb2));
+            break;
         }
         
     }
@@ -55,12 +59,12 @@ const CalculatorForm = (props) => {
             <div>
                 <label htmlFor="nb1">Number </label>
                 <input id="nb1" type="text" onChange={handleNb1} value={nb1}  />
-                <label htmlFor="operation"> Operation </label>
+                <label htmlFor="operation"> Operator </label>
                 <select name="operation" id="operation" onChange={(e) => setOperator(e.target.value)} value={operation}>
-                    <option value="+">+</option>
-                    <option value="-">-</option>
-                    <option value="*">X</option>
-                    <option value="/">/</option>
+                    <option value='+'>+</option>
+                    <option value='-'>-</option>
+                    <option value='X'>X</option>
+                    <option value='/'>/</option>
                 </select>
                 <label htmlFor="nb2"> Number </label>
                 <input id="nb2" type="text" onChange={handleNb2} value={nb2}  />
